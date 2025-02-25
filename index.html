@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎光临 | 我的网站</title>
+    <style>
+        /* 基础样式参考[2]()[3]()[5]() */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            background: linear-gradient(135deg, #83a4d4, #b6fbff);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+ 
+        .welcome-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+ 
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+ 
+        p {
+            color: #34495e;
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+ 
+        /* 倒计时样式 */
+        #countdown {
+            margin-top: 2rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+ 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
+        /* 移动端适配 [5]()  */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-box">
+        <h1>🎉 欢迎来到我的网站！</h1>
+        <p>感谢您的光临！我们致力于提供优质的内容和服务，请尽情探索网站的各个功能模块。</p>
+        <p id="countdown">5秒后自动跳转到主页...</p>
+    </div>
+ 
+    <script>
+        // 自动跳转功能参考[7]()
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown'); 
+        
+        function updateCountdown() {
+            countdownElement.textContent  = `${seconds}秒后自动跳转到主页...`;
+            seconds--;
+            
+            if(seconds < 0) {
+                // 跳转到指定页面 
+                window.location.href  = ""; 
+            }
+        }
+ 
+        // 初始化倒计时 
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
